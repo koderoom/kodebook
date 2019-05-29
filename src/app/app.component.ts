@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Post from 'src/app/post.modal';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +13,10 @@ export class AppComponent {
     public post: Post;
     public postList: Post[];
 
-    public constructor() {
+    public constructor(private sanitizer: DomSanitizer) {
       this.post = new Post();
 
-      // SAMPLE IMAGE POST
-      const samplePostImage = new Post();
-      samplePostImage.postType = 'IMAGE';
-      samplePostImage.postValue = 'assets/hbd.jpg';
-
-      this.postList = [samplePostImage];
+      this.postList = [];
     }
 
     /** Post Text */
@@ -40,6 +36,49 @@ export class AppComponent {
        this.postList.splice(itemIndex, 1);
     }
 
+    /** Post Image */
+    public postImage(event) {
+      console.log('Posting Image...');
+
+      // IT WILL GIVE ACCESS TO INPUT ELEMENT 
+      const refElement = event.target;
+      const uploadedFile = refElement.files[0];
+
+      let uploadedFileAsUrl = URL.createObjectURL(uploadedFile);
+      uploadedFileAsUrl = this.sanitizer.bypassSecurityTrustResourceUrl(uploadedFileAsUrl);
+
+      this.post.postType = 'IMAGE';
+      this.post.postValue = uploadedFileAsUrl;
+
+      // SPLICE - Using this we can add element to any position.
+      this.postList.splice(0, 0, this.post);
+
+      console.log(uploadedFile);
+      
+      // RE INITIALZE
+      this.post = new Post();
+    }
+
+    /** Post Image */
+    public postVideo(event) {
+      console.log('Posting Video...');
+
+      // IT WILL GIVE ACCESS TO INPUT ELEMENT
+      const refElement = event.target;
+      const uploadedFile = refElement.files[0];
+
+      let uploadedFileAsUrl = URL.createObjectURL(uploadedFile);
+      uploadedFileAsUrl = this.sanitizer.bypassSecurityTrustResourceUrl(uploadedFileAsUrl);
+
+      this.post.postType = 'VIDEO';
+      this.post.postValue = uploadedFileAsUrl;
+
+      // SPLICE - Using this we can add element to any position.
+      this.postList.splice(0, 0, this.post);
+      
+      // RE INITIALZE
+      this.post = new Post();
+    }
 
     /** Update Like */
     public likeCount(item: Post) {

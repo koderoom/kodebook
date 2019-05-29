@@ -28,12 +28,12 @@
 
           <label class="badge badge-pill badge-info ml-1" style="font-size: medium; cursor: pointer;">
             Post Image
-            <input type="file" style="display: none">
+            <input (change)="postImage($event)" type="file" style="display: none">
           </label>
           
           <label class="badge badge-pill badge-success ml-1" style="font-size: medium; cursor: pointer;">
             Post Video
-            <input type="file" style="display: none">
+            <input (change)="postVideo($event)" type="file" style="display: none">
           </label>
         </div>
       </div>
@@ -143,23 +143,29 @@
                 </div>
 
                 <div class="d-flex justify-content-between ">
-                  <span class="text-muted badge-light rounded p-1" style="font-size: small;">10 Abhishek and Others</span>
-                  <span class="text-muted badge-light rounded p-1" style="font-size: small;">20 Subscribe</span>
-                  <span class="text-muted badge-light rounded p-1" style="font-size: small;">20 Comments</span>
+                    <span class="text-muted badge-light rounded p-1" style="font-size: small;">
+                      {{item.likeCount}} Abhishek and Others
+                    </span>
+                    <span class="text-muted badge-light rounded p-1" style="font-size: small;">
+                      {{item.subscribeCount}} Subscribe
+                    </span>
+                    <span class="text-muted badge-light rounded p-1" style="font-size: small;">
+                      {{item.commentList.length}} Comments
+                    </span>
                 </div>
               </div>
 
               <div class="card-footer d-flex justify-content-between pb-1">
-                <div>
-                    <a href="#" class="badge badge-pill badge-primary">Like</a>
-                    <a href="#" class="badge badge-pill badge-info ml-1">Subscribe</a>
-                    <a href="#" class="badge badge-pill badge-success ml-1">Comment</a>
-                </div>
-                
-                <div>
-                    <a href="#" class="badge badge-pill badge-secondary">Update</a>
-                    <a href="#" class="badge badge-pill badge-danger ml-1">Delete</a>
-                </div>
+                  <div>
+                      <a  (click)="likeCount(item)" class="text-light badge badge-pill badge-primary" style="cursor: pointer;">Like</a>
+                      <a  (click)="subscribeCount(item)" class=" text-light badge badge-pill badge-info ml-1" style="cursor:pointer">Subscribe</a>
+                      <a  (click)="addComment(item)" class="text-light badge badge-pill badge-success ml-1" style="cursor:pointer">Comment</a>
+                  </div>
+                  
+                  <div>
+                      <a href="#" class="badge badge-pill badge-secondary">Update</a>
+                      <a (click)="deletePost(itemIndex)" style="cursor: pointer"  class="text-light badge badge-pill badge-danger ml-1">Delete</a>
+                  </div>
               </div>
           </div>
       </ng-container>
