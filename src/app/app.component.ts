@@ -44,17 +44,17 @@ export class AppComponent {
       const refElement = event.target;
       const uploadedFile = refElement.files[0];
 
-      let uploadedFileAsUrl = URL.createObjectURL(uploadedFile);
-      uploadedFileAsUrl = this.sanitizer.bypassSecurityTrustResourceUrl(uploadedFileAsUrl);
+      const uploadedFileAsUrl = URL.createObjectURL(uploadedFile);
+      const uploadedFileAsUrlNew = this.sanitizer.bypassSecurityTrustResourceUrl(uploadedFileAsUrl);
 
       this.post.postType = 'IMAGE';
-      this.post.postValue = uploadedFileAsUrl;
+      this.post.postValue = uploadedFileAsUrlNew;
 
       // SPLICE - Using this we can add element to any position.
       this.postList.splice(0, 0, this.post);
 
       console.log(uploadedFile);
-      
+
       // RE INITIALZE
       this.post = new Post();
     }
@@ -67,15 +67,15 @@ export class AppComponent {
       const refElement = event.target;
       const uploadedFile = refElement.files[0];
 
-      let uploadedFileAsUrl = URL.createObjectURL(uploadedFile);
-      uploadedFileAsUrl = this.sanitizer.bypassSecurityTrustResourceUrl(uploadedFileAsUrl);
+      const uploadedFileAsUrl = URL.createObjectURL(uploadedFile);
+      const uploadedFileAsUrlNew = this.sanitizer.bypassSecurityTrustResourceUrl(uploadedFileAsUrl);
 
       this.post.postType = 'VIDEO';
-      this.post.postValue = uploadedFileAsUrl;
+      this.post.postValue = uploadedFileAsUrlNew;
 
       // SPLICE - Using this we can add element to any position.
       this.postList.splice(0, 0, this.post);
-      
+
       // RE INITIALZE
       this.post = new Post();
     }
