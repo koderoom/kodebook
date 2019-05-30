@@ -1,6 +1,7 @@
 export default class Post {
     public postType: string;
-    public postValue: any;
+    public postValue: string;
+    public postValueMedia: any;
 
     public likeCount: number;
     public subscribeCount: number;

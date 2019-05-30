@@ -48,7 +48,7 @@ export class AppComponent {
       const uploadedFileAsUrlNew = this.sanitizer.bypassSecurityTrustResourceUrl(uploadedFileAsUrl);
 
       this.post.postType = 'IMAGE';
-      this.post.postValue = uploadedFileAsUrlNew;
+      this.post.postValueMedia = uploadedFileAsUrlNew;
 
       // SPLICE - Using this we can add element to any position.
       this.postList.splice(0, 0, this.post);
@@ -71,7 +71,7 @@ export class AppComponent {
       const uploadedFileAsUrlNew = this.sanitizer.bypassSecurityTrustResourceUrl(uploadedFileAsUrl);
 
       this.post.postType = 'VIDEO';
-      this.post.postValue = uploadedFileAsUrlNew;
+      this.post.postValueMedia = uploadedFileAsUrlNew;
 
       // SPLICE - Using this we can add element to any position.
       this.postList.splice(0, 0, this.post);

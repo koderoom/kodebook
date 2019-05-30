@@ -94,7 +94,7 @@
           <!-- Image Card-->
           <div *ngIf="item.postType == 'IMAGE'" class="card mt-2" >
               <div class="card-header h6">
-                Paritosh - Image Block Reference
+                CDAC - Image Block Reference
               </div>
 
               <div class="card-body pb-0">
@@ -132,13 +132,13 @@
           <!-- Video Card -->
           <div *ngIf="item.postType == 'VIDEO'" class="card mt-2" >
               <div class="card-header h6">
-                Paritosh - Image Block Reference
+                CDAC - VIDEO Block Reference
               </div>
 
               <div class="card-body pb-0">
                 <div class="make-center" style="height:250px;">
                   <video style="height: 100%; width:100%;" controls>
-                    <source src="assets/1.mp4"/>
+                    <source [src]="item.postValueMedia"/>
                   </video>
                 </div>
 
