@@ -10,10 +10,12 @@
 
   <!-- INPUT BLOCk-->
   <div class="row">
-    <div class="col-3"></div>
+
+    <!-- UNUSED SPACE-->
+    <div class="d-none col-md-3 d-md-block"></div>
 
     <!-- AT CENTER OF SCREEN-->
-    <div class="col-6 alert-secondary rounded p-4">
+    <div class="col-12 col-md-6 alert-secondary rounded p-4">
       <div class="card">
         <div class="card-header h6">
           Create Post
@@ -24,31 +26,35 @@
         </div>
 
         <div class="card-footer pb-0" >
-          <a href="#" (click)="postText()" class="badge badge-pill badge-primary" style="font-size: medium">Post Text</a>
+          <a href="#" (click)="postText()" class="badge badge-pill badge-primary" style="font-size: medium">
+            Text
+          </a>
 
           <label class="badge badge-pill badge-info ml-1" style="font-size: medium; cursor: pointer;">
-            Post Image
+            Image
             <input (change)="postImage($event)" type="file" style="display: none">
           </label>
           
           <label class="badge badge-pill badge-success ml-1" style="font-size: medium; cursor: pointer;">
-            Post Video
+            Video
             <input (change)="postVideo($event)" type="file" style="display: none">
           </label>
         </div>
       </div>
     </div>
 
-    <div class="col-3"></div>
+    <!-- unsed space -->
+    <div class="d-none col-md-3 d-md-block"></div>
   </div>
 
 
   <!-- MAIN SECTION CONTAINER-->
   <div class="row mt-2">
-    <div class="col-3"></div>
+    
+    <div class="d-none col-md-3 d-md-block"></div>
 
     <!-- PARENT SECTION FOR BLOCK-->
-    <div class="col-6" >
+    <div class="col-12 col-md-6" >
         
       <!-- Each Item Represents Individual Post Object -->
       <ng-container *ngFor="let item of postList; let itemIndex = index;">
@@ -186,7 +192,7 @@
         </div>  
     </div>  
 
-    <div class="col-3"></div>
+    <div class="d-none col-md-3 d-md-block"></div>
   </div>
 
 </div>
